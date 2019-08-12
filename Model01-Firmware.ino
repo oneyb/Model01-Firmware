@@ -174,19 +174,34 @@ KEYMAPS(
 
 #if defined (PRIMARY_KEYMAP_QWERTY)
   [PRIMARY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
-   Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
-   ShiftToLayer(FUNCTION),
+  // (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
+  //  Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
+  //  Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
+  //  Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
+  //  Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
+  //  ShiftToLayer(FUNCTION),
 
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
-   Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
-                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
-   ShiftToLayer(FUNCTION)),
+  //  M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
+  //  Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
+  //                 Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
+  //  Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
+  //  Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
+  //  ShiftToLayer(FUNCTION)),
+  (
+   Key_Backtick,     Key_1,             Key_2,        Key_3,          Key_4,          Key_5,      Key_Home,       
+   Key_Tab,          Key_Q,             Key_W,        Key_E,          Key_R,          Key_T,      Key_Escape,     
+   Key_Escape,       Key_A,             Key_S,        Key_D,          Key_F,          Key_G,      
+   Key_LeftShift,    Key_Z,             Key_X,        Key_C,          Key_V,          Key_B,      Key_Delete,     
+   Key_LeftShift,    Key_Spacebar,      Key_LeftAlt,  Key_LeftControl, 
+   ShiftToLayer(FUNCTION),
+  
+   Key_End,         Key_6,             Key_7,      Key_8,         Key_9,       Key_0,          Key_Minus,      
+   Key_RightGui,    Key_Y,             Key_U,      Key_I,         Key_O,       Key_P,          Key_Equals,     
+                    Key_H,             Key_J,      Key_K,         Key_L,       Key_Semicolon,  Key_Quote,      
+   Key_Backspace,   Key_N,             Key_M,      Key_Comma,     Key_Period,  Key_Slash,      Key_Backslash,  
+   Key_RightAlt,    Key_RightControl,  Key_Enter,  Key_RightShift,
+   ShiftToLayer(FUNCTION)
+   ),
 
 #elif defined (PRIMARY_KEYMAP_DVORAK)
 
@@ -263,7 +278,7 @@ KEYMAPS(
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_CapsLock,
+  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_LEDEffectNext,
    Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
    Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
    Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
