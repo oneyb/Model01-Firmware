@@ -32,6 +32,10 @@
 // Support for controlling the keyboard's LEDs
 #include "Kaleidoscope-LEDControl.h"
 
+// Sticky modifiers with escape powers
+#include <Kaleidoscope-OneShot.h>
+#include <Kaleidoscope-Escape-OneShot.h>
+
 // Support for "Numpad" mode, which is mostly just the Numpad specific LED mode
 #include "Kaleidoscope-NumPad.h"
 
@@ -191,16 +195,18 @@ KEYMAPS(
    Key_Backtick,     Key_1,             Key_2,        Key_3,          Key_4,          Key_5,      Key_Home,       
    Key_Tab,          Key_Q,             Key_W,        Key_E,          Key_R,          Key_T,      Key_Escape,     
    Key_Escape,       Key_A,             Key_S,        Key_D,          Key_F,          Key_G,      
-   Key_LeftShift,    Key_Z,             Key_X,        Key_C,          Key_V,          Key_B,      Key_Delete,     
+   Key_PrintScreen,  Key_Z,             Key_X,        Key_C,          Key_V,          Key_B,      Key_Delete,     
    Key_LeftShift,    Key_Spacebar,      Key_LeftAlt,  Key_LeftControl, 
-   ShiftToLayer(FUNCTION),
+   OSL(FUNCTION),
+   // ShiftToLayer(FUNCTION),
   
    Key_End,         Key_6,             Key_7,      Key_8,         Key_9,       Key_0,          Key_Minus,      
    Key_RightGui,    Key_Y,             Key_U,      Key_I,         Key_O,       Key_P,          Key_Equals,     
                     Key_H,             Key_J,      Key_K,         Key_L,       Key_Semicolon,  Key_Quote,      
    Key_Backspace,   Key_N,             Key_M,      Key_Comma,     Key_Period,  Key_Slash,      Key_Backslash,  
    Key_RightAlt,    Key_RightControl,  Key_Enter,  Key_RightShift,
-   ShiftToLayer(FUNCTION)
+   OSL(FUNCTION)
+   // ShiftToLayer(FUNCTION)
    ),
 
 #elif defined (PRIMARY_KEYMAP_DVORAK)
@@ -529,11 +535,16 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // same time.
   MagicCombo,
 
+  OneShot,
+  EscapeOneShot,
+
   // The USBQuirks plugin lets you do some things with USB that we aren't
   // comfortable - or able - to do automatically, but can be useful
   // nevertheless. Such as toggling the key report protocol between Boot (used
   // by BIOSes) and Report (NKRO).
   USBQuirks
+
+
 );
 
 /** The 'setup' function is one of the two standard Arduino sketch functions.
@@ -580,6 +591,18 @@ void setup() {
   // maps for. To make things simple, we set it to five layers, which is how
   // many editable layers we have (see above).
   ColormapEffect.max_layers(5);
+
+  // Sticky Modifiers config
+  // Set this property to the number of milliseconds to wait before timing out
+  // and cancelling the one-shot effect (unless interrupted or cancelled before
+  // by any other means).
+  OneShot.time_out = 2000;
+  // Set this property to the number of milliseconds to wait before considering
+  // a held one-shot key as intentionally held. In this case, the one-shot
+  // effect will not trigger when the key is released. In other words, holding a
+  // one-shot key at least this long, and then releasing it, will not trigger
+  // the one-shot effect.
+  OneShot.hold_time_out = 300;
 }
 
 /** loop is the second of the standard Arduino sketch functions.
